@@ -27,3 +27,9 @@ basically it keeps it allows you to specify topic, partition and offset to read 
 ```bash
  sbt "runMain com.sghaida.pubsub.ConsumerAssignSeek"
 ```
+
+### ingest tweets in Kafka from twitter stream
+read from twitter stream and ingest in kafka using Producer
+```bash
+sbt "runMain com.sghaida.pubsub.TwitterProducer"
+```

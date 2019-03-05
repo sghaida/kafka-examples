@@ -20,6 +20,7 @@ lazy val root = (project in file(".")).settings(
     "org.scalactic" %% "scalactic" % "3.0.5",
     "org.scalatest" %% "scalatest" % "3.0.5" % "test",
     "org.twitter4j" % "twitter4j-core" % "4.0.7",
+    "com.twitter" % "hbc-core" % "2.2.0"
   ),
 
   scalacOptions ++= Seq(

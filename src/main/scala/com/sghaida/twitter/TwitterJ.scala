@@ -5,7 +5,7 @@ import twitter4j.conf.ConfigurationBuilder
 
 import scala.collection.JavaConverters.asScalaBufferConverter
 
-case class Twitter(
+case class TwitterJ(
       key: String, secret: String, accessToken: String, tokenSecret: String,
       retryIntervalSeconds: Int = 60, retryCount: Int=10
 ) {
