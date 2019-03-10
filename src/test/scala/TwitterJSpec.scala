@@ -1,7 +1,7 @@
 import com.sghaida.twitter.TwitterJ
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
-class TwitterJTest extends FlatSpec with Matchers with OptionValues{
+class TwitterJSpec extends FlatSpec with Matchers with OptionValues{
 
   private val consumerApiKey = sys.env.getOrElse(
     "TWITTER_CONSUMER_API_KEY", throw new Exception("TWITTER_CONSUMER_API_KEY is not defined in env")
