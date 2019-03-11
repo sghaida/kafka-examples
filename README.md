@@ -33,3 +33,9 @@ read from twitter stream and ingest in kafka using Producer
 ```bash
 sbt "runMain com.sghaida.pubsub.TwitterProducer"
 ```
+
+### ingest tweets in ElasticSearch using Kafka Producer
+read from twitter from kafka and insert them into Elasticsearch with their ids
+```bash
+sbt "runMain com.sghaida.pubsub.TwitterConsumer"
+```
