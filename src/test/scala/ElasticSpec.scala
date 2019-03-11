@@ -6,14 +6,27 @@ class ElasticSpec extends FlatSpec with Matchers with OptionValues{
 
   implicit def toOption[T](a: T): Some[T] = Some(a)
 
-  val es = Elastic("host:443","username", "password")
+  val es = Elastic("https://host:443","username", "password")
 
-  "create index " should "return true" in{
+  "create index" should "return true" in{
 
-    val res = es.createIndex("test",ElasticApi.mapping("test_mapping").fields(
-      ElasticApi.textField("name")))
+    val esMapping = ElasticApi.mapping("t1").fields(
+      Seq(
+        ElasticApi.textField("name"),
+        ElasticApi.intField("age")
+      )
+    )
 
-    assert(res, "index hasn't been created")
+    val res = es.createIndex("test",Some(esMapping), "t1")
+
+    assert(res.isRight && res.right.get, "index hasn't been created")
+  }
+
+  "insert into index" should "return true" in{
+
+    val res = es.insertDoc("test", "t1", Map("id" -> 1, "name" -> "saddam", "age" -> 38))
+
+    assert(res.isRight, "doc hasn't been inserted")
   }
 
   "delete index " should "return true" in{
