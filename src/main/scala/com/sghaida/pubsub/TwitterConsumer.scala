@@ -7,8 +7,7 @@ import com.sghaida.elk.Elastic
 import com.sksamuel.elastic4s.indexes.IndexRequest
 import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 import org.apache.kafka.common.serialization.StringDeserializer
-import org.apache.kafka.connect.json.JsonDeserializer
-import org.json4s.JsonAST.{JObject, JString}
+import org.json4s.JsonAST.{JInt, JNumber, JObject, JString}
 import org.json4s.jackson.JsonMethods
 import org.slf4j.LoggerFactory
 
@@ -28,7 +27,6 @@ object TwitterConsumer {
     val es = Elastic("https://host:443","username", "password")
 
     val res = es.createIndex("twitter", None,  "tweets")
-
     if (res.isLeft) throw new Exception("es index couldn't be created")
 
     /* 1. create consumer properties */
@@ -72,7 +70,9 @@ object TwitterConsumer {
           "id_str"
         )
 
-        bulkRequest :+=  es.genInsertDoc("twitter", "tweets", rec.value(), id)
+        if (getFollowersCount(rec.value()) > 1000)
+          /* just save the tweets that has more than 1000 follower for that specific user*/
+          bulkRequest :+=  es.genInsertDoc("twitter", "tweets", rec.value(), id)
       }
 
       if (bulkRequest.nonEmpty) {
@@ -94,6 +94,15 @@ object TwitterConsumer {
     res \ idFieldName match {
       case x: JString => x.s
       case _ => defaultId
+    }
+  }
+
+  def getFollowersCount(jsonStr: String): Int = {
+    val res = JsonMethods.parse(jsonStr).asInstanceOf[JObject]
+
+    ((res \ "user").asInstanceOf[JObject] \ "followers_count").asInstanceOf[JNumber] match {
+      case JInt(x) if x.isDefined=> x.value.toInt
+      case _ => 0
     }
   }
 }
