@@ -1,15 +1,10 @@
 
 val elastic4sVersion = "6.5.1"
 
-lazy val root = (project in file(".")).settings(
-
-  inThisBuild(List(
-    organization    := "sghaida",
-    scalaVersion    := "2.12.8",
-    version         := "0.0.1"
-  )),
-
-  name := "kafka-examples",
+val commonSettings = Seq(
+  organization    := "sghaida",
+  scalaVersion    := "2.12.8",
+  version         := "0.0.1",
 
   resolvers ++= Seq(
     "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
@@ -40,5 +35,10 @@ lazy val root = (project in file(".")).settings(
     "-language:implicitConversions",
     "-language:postfixOps"
   )
+)
 
+lazy val root = (project in file("."))
+  .settings(commonSettings: _*).settings(
+  name := "kafka-examples",
+  mainClass in assembly := Some("com.sghaida.streams.WordCount")
 )
