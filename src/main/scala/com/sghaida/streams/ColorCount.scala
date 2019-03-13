@@ -9,6 +9,8 @@ import org.apache.kafka.streams.scala.{Serdes, StreamsBuilder}
 import org.apache.kafka.streams.scala.kstream.{KStream, KTable}
 import org.apache.kafka.streams.scala.ImplicitConversions._
 import Serdes._
+
+
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.duration.{Duration, DurationLong}
@@ -23,6 +25,10 @@ object ColorCount {
     val props = new Properties()
     props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
     props.put(StreamsConfig.APPLICATION_ID_CONFIG, "favourite-color-application")
+
+    /* make sure that the message processed exactly once*/
+    props.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE)
+
     props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String.getClass.getName)
     props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String.getClass.getName)
     props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG , "earliest")

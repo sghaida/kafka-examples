@@ -18,6 +18,7 @@ val commonSettings = Seq(
     "org.twitter4j" % "twitter4j-core" % "4.0.7",
     "com.twitter" % "hbc-core" % "2.2.0",
     "org.json4s" %% "json4s-jackson" % "3.6.5",
+    "com.fasterxml.jackson.datatype" % "jackson-datatype-joda" % "2.9.8",
 
     // elasticsearch
     "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
