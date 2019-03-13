@@ -1,13 +1,13 @@
-package com.sghaida.pubsub
+package com.sghaida.producers
 
 import java.util.Properties
 
 import com.sghaida.models.Transaction
-import org.apache.kafka.clients.producer._
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
 import org.apache.kafka.common.serialization.StringSerializer
 import org.slf4j.LoggerFactory
-import util.control.Breaks._
 
+import scala.util.control.Breaks.{break, breakable}
 
 object TransactionsProducer {
 

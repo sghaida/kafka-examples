@@ -1,14 +1,13 @@
-package com.sghaida.pubsub
+package com.sghaida.producers
 
 import java.util.Properties
 import java.util.concurrent.{LinkedBlockingQueue, TimeUnit}
 
-import com.sghaida.twitter.{OAuth, Twitter => tw}
 import com.google.common.collect.Lists
+import com.sghaida.twitter.{OAuth, Twitter => tw}
 import org.apache.kafka.clients.producer._
 import org.apache.kafka.common.serialization.StringSerializer
 import org.slf4j.LoggerFactory
-
 
 object TwitterProducer {
 
@@ -86,11 +85,10 @@ object TwitterProducer {
       val msg = try {
         Some(messageQueue.poll(5,TimeUnit.SECONDS))
       } catch {
-        case ex: InterruptedException => {
+        case ex: InterruptedException =>
           logger.error(ex.getMessage)
           client.stop()
           None
-        }
       }
       msg match {
         case Some(tweet) =>

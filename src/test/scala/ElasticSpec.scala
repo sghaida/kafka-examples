@@ -6,7 +6,7 @@ class ElasticSpec extends FlatSpec with Matchers with OptionValues{
 
   implicit def toOption[T](a: T): Some[T] = Some(a)
 
-  val es = Elastic("https://host:443","username", "password")
+  val es = Elastic("https://sghaida-2715151224.eu-west-1.bonsaisearch.net:443","c8ghylkhlf", "sstbbfn71v")
 
   "create index" should "return true" in{
 

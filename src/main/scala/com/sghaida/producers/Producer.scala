@@ -1,12 +1,10 @@
-package com.sghaida.pubsub
-
+package com.sghaida.producers
 
 import java.util.Properties
 
-import org.apache.kafka.clients.producer._
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord, RecordMetadata}
 import org.apache.kafka.common.serialization.StringSerializer
 import org.slf4j.LoggerFactory
-
 
 object Producer {
 

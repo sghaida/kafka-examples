@@ -1,4 +1,4 @@
-package com.sghaida.pubsub
+package com.sghaida.consumers
 
 import java.time
 import java.util.Properties

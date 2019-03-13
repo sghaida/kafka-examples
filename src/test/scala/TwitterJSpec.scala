@@ -4,19 +4,19 @@ import org.scalatest.{FlatSpec, Matchers, OptionValues}
 class TwitterJSpec extends FlatSpec with Matchers with OptionValues{
 
   private val consumerApiKey = sys.env.getOrElse(
-    "TWITTER_CONSUMER_API_KEY", throw new Exception("TWITTER_CONSUMER_API_KEY is not defined in env")
+    "TWITTER_CONSUMER_API_KEY", "we62Lu78d330NvrUGPLPXuWBl"
   )
 
   private val consumerApiSecret = sys.env.getOrElse(
-    "TWITTER_CONSUMER_API_SECRET", throw new Exception("TWITTER_CONSUMER_API_SECRET is not defined in env")
+    "TWITTER_CONSUMER_API_SECRET", "ScreiRYC71LwUWe4OY1yJZOsHVSOaBCuDLvnmzbZGhIuPqwX6f"
   )
 
   private val accessToken = sys.env.getOrElse(
-    "TWITTER_ACCESS_TOKEN", throw new Exception("TWITTER_ACCESS_TOKEN is not defined in env")
+    "TWITTER_ACCESS_TOKEN", "71761115-xIxcnp0inlG3BP56n9s9p5qcPm0Mwf9uLGwf8wZcR"
   )
 
   private val accessTokenSecret = sys.env.getOrElse(
-    "TWITTER_ACCESS_TOKEN_SECRET", throw new Exception("TWITTER_ACCESS_TOKEN_SECRET is not defined in env")
+    "TWITTER_ACCESS_TOKEN_SECRET", "RI5HDpfShAiC9pJDznCMeNVNEyKtFD768ZH4tZ48IMW5f"
   )
 
   val twitter = TwitterJ(

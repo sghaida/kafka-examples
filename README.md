@@ -43,14 +43,14 @@ Start kafka producer
 
 #### run producer
 ```bash
- sbt "runMain com.sghaida.pubsub.Producer"
+ sbt "runMain com.sghaida.producers.Producer"
 ```
 
 #### run normal consumer
 none-threaded implementation. basically it keeps listening forever and consume whatever has been produced for specific topic
 
 ```bash
- sbt "runMain com.sghaida.pubsub.BasicConsumer"
+ sbt "runMain com.sghaida.consumers.BasicConsumer"
 ```
 
 #### run threaded consumer
@@ -58,33 +58,33 @@ threaded implementation. basically it keeps listening forever on its own thread 
 until termination signal is being caught from the main thread
 
 ```bash
- sbt "runMain com.sghaida.pubsub.ConsumerWithThread"
+ sbt "runMain com.sghaida.consumers.ConsumerWithThread"
 ```
 
 #### run Play back
 basically it keeps it allows you to specify topic, partition and offset to read from, you can think about it as player for events
 
 ```bash
- sbt "runMain com.sghaida.pubsub.ConsumerAssignSeek"
+ sbt "runMain com.sghaida.consumers.ConsumerAssignSeek"
 ```
 
 #### ingest tweets in Kafka from twitter stream
 read from twitter stream and ingest in kafka using Producer
 ```bash
-sbt "runMain com.sghaida.pubsub.TwitterProducer"
+sbt "runMain com.sghaida.producers.TwitterProducer"
 ```
 
 #### ingest tweets in ElasticSearch using Kafka Producer
 read from twitter from kafka and insert them into Elasticsearch with their ids
 ```bash
-sbt "runMain com.sghaida.pubsub.TwitterConsumer"
+sbt "runMain com.sghaida.consumers.TwitterConsumer"
 ```
 
 
 ### produce random bank transaction
 Ingest random bank transactions
 ```bash
-sbt "runMain com.sghaida.pubsub.TransactionsProducer"
+sbt "runMain com.sghaida.producers.TransactionsProducer"
 ```
 
 ### aggregate account balance
