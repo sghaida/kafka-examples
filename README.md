@@ -79,3 +79,16 @@ read from twitter from kafka and insert them into Elasticsearch with their ids
 ```bash
 sbt "runMain com.sghaida.pubsub.TwitterConsumer"
 ```
+
+
+### produce random bank transaction
+Ingest random bank transactions
+```bash
+sbt "runMain com.sghaida.pubsub.TransactionsProducer"
+```
+
+### aggregate account balance
+for the generated random bank transactions aggregate all balances using `groubByKey` and `aggregate`
+ ```bash
+ sbt "runMain com.sghaida.streams.TransactionsBalance"
+ ```
