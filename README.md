@@ -1,5 +1,8 @@
 ## Kafka examples
 some experimentation with Kafka, not the cleanest code out their but for demonstration purposes it fits perfectly.
+the code is supplementary for the Scala lovers for the following awsome course provided by [Stephane Maarek] (https://www.udemy.com/user/stephane-maarek/)
+1. [apache-kafka](https://www.udemy.com/apache-kafka/)
+2. [kafka-streams](https://www.udemy.com/kafka-streams/)
 
 ### Kafka basic commands
 Common used commands
